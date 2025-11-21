@@ -29,7 +29,8 @@ const SesionE = () => {
       console.log("Login empresa response:", response)
 
       if (response && response.id) {
-        navigate(`/perfil/empresa/${response.id}`)
+        localStorage.setItem("empresaData", JSON.stringify(response));
+        navigate("/PrincipalEmpresa");
       } else {
         setError("Credenciales inválidas")
       }

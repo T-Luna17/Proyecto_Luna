@@ -1,6 +1,6 @@
 import { FaSearch, FaBell, FaMoon, FaSun } from "react-icons/fa";
 
-function Navbar({ darkMode, setDarkMode }) {
+function Navbar({ darkMode, setDarkMode, usuario }) {
   return (
     <header className="navbar">
       <div className="navbar-left">
@@ -18,15 +18,23 @@ function Navbar({ darkMode, setDarkMode }) {
         </button>
 
         <FaBell className="navbar-icon" />
-        <img
-          src=""
-          alt="user"
-          className="navbar-avatar"
-        />
-        <span className="navbar-name">Tami Luna</span>
+
+        {/* FOTO DEL USUARIO COMO ENLACE AL PERFIL */}
+        <a href={`../PerfilEmpresa`}>
+          <img
+            src={usuario?.foto || "/default-user.png"}
+            alt="user"
+            className="navbar-avatar"
+          />
+        </a>
+
+        {/* NOMBRE DINÁMICO */}
+        <span className="navbar-name">
+          {usuario?.nombre || "Usuario"}
+        </span>
       </div>
     </header>
   );
 }
 
-export default Navbar
+export default Navbar;

@@ -7,6 +7,7 @@ import RegistroEmpresa from "../Pages/RegistroEmpresa"
 import SesionEmpresa from "../Pages/SesionEmpresa"
 import RegistroVoluntario from "../Pages/RegistroVoluntario"
 import SesionVoluntario from "../Pages/SesionVoluntario"
+import PerfilEmpres from "../Pages/PrincipalEmpresa"
 
 const Routing = ()=>{
     return(
@@ -16,6 +17,7 @@ const Routing = ()=>{
                 <Route path='/Sobre' element={<Sobre/>}/>
                 <Route path='/InicioR' element={<InicioR/>}/>
                 <Route path='/PrincipalEmpresa' element={<PrincipalEmpresa/>}/>
+                <Route path='/PerfilEmpresa' element ={<PerfilEmpres/>}/>
                 <Route path='/RegistroEmpresa' element={<RegistroEmpresa/>}/>
                 <Route path='/SesionEmpresa' element={<SesionEmpresa/>}/>
                 <Route path='/RegistroVoluntario' element={<RegistroVoluntario/>}/>

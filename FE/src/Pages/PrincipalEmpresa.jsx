@@ -2,12 +2,15 @@ import { useState, useEffect } from "react";
 import Sidebar from "../components/Empresa/PaginaPrincipalE/Sidebar";
 import Navbar from "../components/Empresa/PaginaPrincipalE/Navbar";
 import Dashboard from "../components/Empresa/PaginaPrincipalE/Dashboard";
-import "../style/Principal.css"
+import "../style/Principal.css";
 
 function PrincipalE() {
   const [darkMode, setDarkMode] = useState(false);
 
-  // Cambia la clase del body cuando cambia el modo
+  // Cargar datos del usuario desde localStorage
+  const usuario = JSON.parse(localStorage.getItem("empresaData"));
+
+  // Manejo del modo oscuro
   useEffect(() => {
     document.body.classList.toggle("dark-mode", darkMode);
   }, [darkMode]);
@@ -15,8 +18,15 @@ function PrincipalE() {
   return (
     <div className="app-container">
       <Sidebar />
+      
       <div className="main-content">
-        <Navbar darkMode={darkMode} setDarkMode={setDarkMode} />
+        {/* Navbar dinámico */}
+        <Navbar 
+          darkMode={darkMode} 
+          setDarkMode={setDarkMode} 
+          usuario={usuario}
+        />
+
         <Dashboard />
       </div>
     </div>

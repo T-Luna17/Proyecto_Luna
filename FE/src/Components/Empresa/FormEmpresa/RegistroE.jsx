@@ -13,7 +13,7 @@ const FormEmpresa = () => {
 
   async function registrarEmpresa() {
     const objEmpresa = {
-      usuario: usuario,
+      cedula_juridica: usuario,
       nombre: nombre,
       descripcion: descripcion,
       telefono: telefono,
@@ -23,7 +23,7 @@ const FormEmpresa = () => {
       password : clave,
     }
 
-    const peticion = await postData("usuarios/empresa/", objEmpresa)
+    const peticion = await postData("/empresas/register-empresa/", objEmpresa)
     console.log(peticion)
   }
 
