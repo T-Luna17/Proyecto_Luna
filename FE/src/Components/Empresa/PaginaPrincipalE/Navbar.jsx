@@ -1,11 +1,26 @@
-import { FaSearch, FaBell, FaMoon, FaSun } from "react-icons/fa";
+import { FaSearch, FaMoon, FaSun } from "react-icons/fa";
+import { useState } from "react";
 
-function Navbar({ darkMode, setDarkMode, usuario }) {
+function Navbar({ darkMode, setDarkMode, usuario, onSearch }) {
+  const [texto, setTexto] = useState("");
+
+  const handleSearch = (e) => {
+    const value = e.target.value;
+    setTexto(value);
+    onSearch(value); // 🔍 manda el texto hacia afuera
+  };
+
   return (
     <header className="navbar">
       <div className="navbar-left">
         <FaSearch className="navbar-icon" />
-        <input type="text" placeholder="Buscar..." className="navbar-input" />
+        <input
+          type="text"
+          placeholder="Buscar..."
+          value={texto}
+          onChange={handleSearch}
+          className="navbar-input"
+        />
       </div>
 
       <div className="navbar-right">
@@ -17,18 +32,6 @@ function Navbar({ darkMode, setDarkMode, usuario }) {
           {darkMode ? <FaSun /> : <FaMoon />}
         </button>
 
-        <FaBell className="navbar-icon" />
-
-        {/* FOTO DEL USUARIO COMO ENLACE AL PERFIL */}
-        <a href={`../PerfilEmpresa`}>
-          <img
-            src={usuario?.foto || "/default-user.png"}
-            alt="user"
-            className="navbar-avatar"
-          />
-        </a>
-
-        {/* NOMBRE DINÁMICO */}
         <span className="navbar-name">
           {usuario?.nombre || "Usuario"}
         </span>

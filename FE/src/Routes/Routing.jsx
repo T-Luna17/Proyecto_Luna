@@ -1,13 +1,16 @@
 import {BrowserRouter as Router, Routes, Route} from 'react-router-dom';
-import Lading from '../pages/Lading';
+import Lading from '../pages/Lading'
 import Sobre from "../pages/SobreNosotros"
-import InicioR from '../Components/LP/InicioR';
+import InicioR from '../Components/LP/InicioR'
 import PrincipalEmpresa from "../Pages/PrincipalEmpresa"
 import RegistroEmpresa from "../Pages/RegistroEmpresa"
 import SesionEmpresa from "../Pages/SesionEmpresa"
 import RegistroVoluntario from "../Pages/RegistroVoluntario"
 import SesionVoluntario from "../Pages/SesionVoluntario"
-import PerfilEmpres from "../Pages/PrincipalEmpresa"
+import PerfilEmpresa from "../Pages/PerfilEmpresa"
+import CalendarioE from '../Pages/CalendarPage'
+import EventosEmpresa from "../Pages/EventosPaage"
+import Voluntarios from "../Pages/VoluntarioPages"
 
 const Routing = ()=>{
     return(
@@ -17,11 +20,14 @@ const Routing = ()=>{
                 <Route path='/Sobre' element={<Sobre/>}/>
                 <Route path='/InicioR' element={<InicioR/>}/>
                 <Route path='/PrincipalEmpresa' element={<PrincipalEmpresa/>}/>
-                <Route path='/PerfilEmpresa' element ={<PerfilEmpres/>}/>
+                <Route path='/PerfilEmpresa' element ={<PerfilEmpresa/>}/>
                 <Route path='/RegistroEmpresa' element={<RegistroEmpresa/>}/>
                 <Route path='/SesionEmpresa' element={<SesionEmpresa/>}/>
                 <Route path='/RegistroVoluntario' element={<RegistroVoluntario/>}/>
                 <Route path='/SesionVoluntario' element={<SesionVoluntario/>}/>
+                <Route path='/CalendarioE' element={<CalendarioE/>}/>
+                <Route path='/EventosEmpresa' element={<EventosEmpresa/>}/>
+                <Route path='/Voluntarios' element={<Voluntarios/>}/>
             </Routes>
         </Router>
     )

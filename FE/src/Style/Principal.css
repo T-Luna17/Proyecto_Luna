@@ -191,6 +191,28 @@ body {
   transition: all 0.4s ease;
 }
 
+/* --- Sección pequeña de perfil --- */
+
+.sidebar-profile-mini {
+  margin-top: auto;
+  padding: 14px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  border-top: 1px solid #ffffff25;
+  color: white;
+  transition: background 0.2s;
+}
+
+.sidebar-profile-mini:hover {
+  background: #ffffff15;
+}
+
+.sidebar-profile-icon {
+  font-size: 26px;
+}
+
 /* ===========================
    BLOG CARD
    =========================== */
