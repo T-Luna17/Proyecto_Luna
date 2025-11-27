@@ -4,6 +4,7 @@ import Sidebar from "../Components/Empresa/PaginaPrincipalE/Sidebar/";
 import Navbar from "../Components/Empresa/PaginaPrincipalE/Navbar/";
 import Calendar from "react-calendar";
 import "react-calendar/dist/Calendar.css";
+import "../Style/CalendarioVoluntario.css";
 
 import { getData } from "../Services/Fetch"; 
 
@@ -13,7 +14,7 @@ function CalendarPage() {
 
   useEffect(() => {
     async function fetchEventos() {
-      const data = await getData("eventos/"); // AJUSTA la ruta de tu API
+      const data = await getData("voluntariados/"); 
       setEventos(data);
     }
     fetchEventos();
@@ -60,18 +61,7 @@ function CalendarPage() {
 
             // Si hay evento → mostramos punto verde
             if (eventosByDate[key]) {
-              return (
-                <div
-                  style={{
-                    marginTop: "4px",
-                    width: "8px",
-                    height: "8px",
-                    borderRadius: "50%",
-                    backgroundColor: "green",
-                    marginInline: "auto",
-                  }}
-                ></div>
-              );
+              return ;
             }
             return null;
           }}

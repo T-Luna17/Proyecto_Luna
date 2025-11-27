@@ -1,5 +1,5 @@
 /* ===========================
-   EVENTOS
+   CONTENEDOR GENERAL
    =========================== */
 
 .eventos-container {
@@ -8,6 +8,10 @@
   flex-direction: column;
   gap: 1.5rem;
 }
+
+/* ===========================
+   HEADER
+   =========================== */
 
 .eventos-header {
   display: flex;
@@ -38,11 +42,86 @@
   background: #00a68c;
 }
 
+/* ===========================
+   FORMULARIO DE CREACIÓN
+   =========================== */
+
+.eventos-form {
+  background: var(--color-surface);
+  padding: 1.8rem;
+  border-radius: 18px;
+  box-shadow: var(--shadow);
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  animation: fadeIn 0.3s ease;
+}
+
+.eventos-form h3 {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--color-text);
+  margin-bottom: 0.5rem;
+}
+
+/* Inputs */
+.eventos-form input,
+.eventos-form textarea,
+.eventos-form select {
+  width: 100%;
+  padding: 0.8rem 1rem;
+  border: 2px solid var(--color-hover);
+  background: var(--color-background);
+  border-radius: 12px;
+  color: var(--color-text);
+  font-size: 0.95rem;
+  outline: none;
+  transition: all 0.2s ease;
+}
+
+.eventos-form input:focus,
+.eventos-form textarea:focus,
+.eventos-form select:focus {
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px rgba(0, 191, 166, 0.15);
+}
+
+.eventos-form textarea {
+  resize: none;
+  height: 80px;
+}
+
+/* Botón guardar */
+.eventos-save-btn {
+  background: var(--color-primary);
+  color: white;
+  padding: 0.9rem;
+  border: none;
+  border-radius: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: var(--shadow);
+  transition: all 0.25s ease;
+}
+
+.eventos-save-btn:hover {
+  background: #00a68c;
+  transform: translateY(-2px);
+}
+
+/* ===========================
+   GRID DE EVENTOS
+   =========================== */
+
 .eventos-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
   gap: 1.5rem;
 }
+
+/* ===========================
+   TARJETA DE EVENTO
+   =========================== */
 
 .event-card {
   background: var(--color-surface);
@@ -88,4 +167,13 @@
   color: var(--color-primary);
   font-size: 0.85rem;
   font-weight: 600;
+}
+
+/* ===========================
+   ANIMACIONES
+   =========================== */
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-8px); }
+  to   { opacity: 1; transform: translateY(0); }
 }

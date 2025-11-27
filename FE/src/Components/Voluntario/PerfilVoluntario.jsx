@@ -1,28 +1,62 @@
 import { useEffect, useState } from "react";
 import { getData } from "../../Services/Fetch";
 
-const PerfilV = () => {
+const PerfilUsuario = ({ idUsuario }) => {
     const [usuario, setUsuario] = useState(null);
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState(null);
 
     useEffect(() => {
         async function fetchUsuario() {
-            const data = await getData(`usuarios/perfil/usuario/${localStorage.getItem("idUsuario") || ""}/`);
-            setUsuario(data);
+            try {
+                if (!idUsuario) {
+                    setError("No se encontró el ID del usuario.");
+                    setLoading(false);
+                    return;
+                }
+
+                const data = await getData(`usuarios/perfil/usuario/${idUsuario}/`);
+
+                if (!data || data.detail) {
+                    setError("No se pudo cargar el perfil del usuario.");
+                } else {
+                    setUsuario(data);
+                }
+            } catch (error) {
+                setError("Error al conectar con el servidor.");
+            } finally {
+                setLoading(false);
+            }
         }
+
         fetchUsuario();
-    }, []);
-    if (!usuario) return <p>Cargando perfil...</p>;
+    }, [idUsuario]);
+
+    if (loading) return <p className="loading-msg">Cargando perfil del usuario...</p>;
+    if (error) return <p className="error-msg">{error}</p>;
+
     return (
-        <div className="perfil-usuario">
-            <h2>{usuario.first_name} {usuario.last_name}</h2>
-            <p><strong>Nombre de usuario:</strong> {usuario.username}</p>
-            <p><strong>Correo:</strong> {usuario.email}</p>
-            <p><strong>Cédula:</strong> {usuario.num_cedula}</p>
-            <p><strong>Teléfono:</strong> {usuario.num_telefono}</p>
-            <p><strong>Dirección:</strong> {usuario.direccion}</p>
-            <p><strong>Fecha de nacimiento:</strong> {usuario.fecha_nacimiento}</p>
-            <p><strong>Género:</strong> {usuario.genero}</p>
+        <div className="perfil-usuario-container">
+            <h2 className="perfil-usuario-titulo">
+                {usuario.first_name} {usuario.last_name}
+            </h2>
+
+            <div className="perfil-usuario-info">
+                <p><strong>Nombre de usuario:</strong> {usuario.username}</p>
+                <p><strong>Correo:</strong> {usuario.email}</p>
+                <p><strong>Cédula:</strong> {usuario.num_cedula || "No registrada"}</p>
+                <p><strong>Teléfono:</strong> {usuario.num_telefono || "No registrado"}</p>
+                <p><strong>Dirección:</strong> {usuario.direccion || "No especificada"}</p>
+                <p><strong>Fecha de nacimiento:</strong>{" "}
+                    {usuario.fecha_nacimiento
+                        ? new Date(usuario.fecha_nacimiento).toLocaleDateString()
+                        : "No registrada"
+                    }
+                </p>
+                <p><strong>Género:</strong> {usuario.genero || "No especificado"}</p>
+            </div>
         </div>
     );
-}
-export default PerfilV;
+};
+
+export default PerfilUsuario;

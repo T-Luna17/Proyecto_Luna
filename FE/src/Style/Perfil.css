@@ -1,0 +1,117 @@
+/* ===========================
+   CONTENEDOR GENERAL
+   =========================== */
+
+.perfil-container,
+.perfil-usuario-container {
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+  padding: 2rem;
+  max-width: 800px;
+  margin: 2rem auto;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.perfil-container:hover,
+.perfil-usuario-container:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+}
+
+/* ===========================
+   TÍTULOS
+   =========================== */
+
+.perfil-titulo,
+.perfil-usuario-titulo {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #222;
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+/* ===========================
+   INFORMACIÓN
+   =========================== */
+
+.perfil-info,
+.perfil-usuario-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+.perfil-info p,
+.perfil-usuario-info p {
+  font-size: 1rem;
+  color: #444;
+  line-height: 1.5;
+}
+
+.perfil-info p strong,
+.perfil-usuario-info p strong {
+  color: #000;
+}
+
+/* ===========================
+   LINKS
+   =========================== */
+
+.perfil-info a,
+.perfil-usuario-info a {
+  color: #00a68c;
+  text-decoration: none;
+}
+
+.perfil-info a:hover,
+.perfil-usuario-info a:hover {
+  text-decoration: underline;
+}
+
+/* ===========================
+   MENSAJES
+   =========================== */
+
+.loading-msg,
+.error-msg {
+  text-align: center;
+  font-size: 1rem;
+  padding: 1rem;
+  border-radius: 12px;
+}
+
+.loading-msg {
+  background-color: #e0f7fa;
+  color: #00796b;
+}
+
+.error-msg {
+  background-color: #ffebee;
+  color: #c62828;
+}
+
+/* ===========================
+   RESPONSIVE
+   =========================== */
+
+@media (max-width: 768px) {
+  .perfil-container,
+  .perfil-usuario-container {
+    padding: 1.5rem;
+    margin: 1rem;
+  }
+
+  .perfil-titulo,
+  .perfil-usuario-titulo {
+    font-size: 1.6rem;
+  }
+
+  .perfil-info p,
+  .perfil-usuario-info p {
+    font-size: 0.95rem;
+  }
+}
+
+

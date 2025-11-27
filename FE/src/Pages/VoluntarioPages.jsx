@@ -12,7 +12,7 @@ function VoluntariosPage() {
   }, []);
 
   async function cargarVoluntarios() {
-    const data = await getData("voluntariados/voluntarios_empresa/");
+    const data = await getData("usuarios/");
     setVoluntarios(data);
   }
 
