@@ -1,0 +1,155 @@
+/* ====== VARIABLES ====== */
+:root {
+  --color-ambiental: #4caf50;
+  --color-social: #2196f3;
+  --color-salud: #ff9800;
+  --color-educacion: #9c27b0;
+  --color-otro: #aaaaaa;
+}
+
+/* ====== CONTENEDOR GENERAL ====== */
+.app-container {
+  display: flex;
+  width: 100%;
+  min-height: 100vh;
+  background: #f5f7fa;
+}
+
+.app-container.dark {
+  background: #1e1e1e;
+  color: white;
+}
+
+.main-content {
+  flex: 1;
+  padding: 20px 40px;
+}
+
+/* ====== TITULOS ====== */
+.page-title {
+  font-size: 28px;
+  font-weight: 700;
+  margin-bottom: 5px;
+}
+
+.page-desc {
+  margin-bottom: 25px;
+  color: #666;
+}
+
+/* ====== LAYOUT ====== */
+.calendar-layout {
+  display: flex;
+  gap: 30px;
+  width: 100%;
+}
+
+.calendar-wrapper {
+  background: white;
+  padding: 15px;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  width: 380px;
+}
+
+.app-container.dark .calendar-wrapper {
+  background: #2a2a2a;
+}
+
+/* ====== CALENDARIO ====== */
+.calendar-custom {
+  border: none !important;
+  width: 100%;
+}
+
+.dia-evento-general {
+  background-color: rgba(0, 150, 255, 0.1);
+  border-radius: 10px;
+}
+
+/* Puntito de color del calendario */
+.dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  margin: auto;
+  margin-top: 4px;
+}
+
+/* ====== PANELES ====== */
+.info-panel {
+  flex: 1;
+  padding: 20px;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.app-container.dark .info-panel {
+  background: #2a2a2a;
+}
+
+.info-title {
+  font-size: 22px;
+  font-weight: 700;
+  margin-bottom: 15px;
+}
+
+.info-empty {
+  color: #777;
+  font-style: italic;
+}
+
+/* ====== TARJETAS ====== */
+.info-card {
+  background: #f9fafc;
+  padding: 15px;
+  border-radius: 10px;
+  margin-bottom: 12px;
+  border-left: 6px solid var(--color-social);
+  transition: 0.2s;
+}
+
+.app-container.dark .info-card {
+  background: #333;
+}
+
+/* ====== CATEGORÍAS ====== */
+.categoria {
+  font-weight: bold;
+}
+
+.categoria-ambiental {
+  color: var(--color-ambiental);
+}
+
+.categoria-social {
+  color: var(--color-social);
+}
+
+.categoria-salud {
+  color: var(--color-salud);
+}
+
+.categoria-educacion {
+  color: var(--color-educacion);
+}
+
+.categoria-otro {
+  color: var(--color-otro);
+}
+
+/* ====== BOTÓN ====== */
+.event-btn {
+  margin-top: 10px;
+  padding: 8px 12px;
+  background: var(--color-social);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.event-btn:hover {
+  background: #1976d2;
+}
