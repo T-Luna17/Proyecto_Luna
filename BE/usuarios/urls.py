@@ -8,6 +8,4 @@ urlpatterns = [
    path("validar-usuario",UsuarioLogin.as_view()),
    path("register-usuario",UsuarioListCreateView.as_view()),
    path("perfil/usuario/<int:id_usuario>/", PerfilUsuarioView.as_view(), name="perfil-usuario"),
-   path("logros/", LogroListCreateView.as_view(), name="logro-list-create"),
-   path("logros/por-usuario/<int:usuario_id>/", LogroPorUsuarioView.as_view(), name="logro-por-usuario"),
 ]  

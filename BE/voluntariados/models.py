@@ -13,3 +13,14 @@ class Voluntariado(models.Model):
     
     def __str__(self):
         return self.nombre
+    
+class Inscripcion(models.Model):
+    usuario = models.ForeignKey('usuarios.Usuario', on_delete=models.CASCADE)
+    voluntariado = models.ForeignKey('Voluntariado', on_delete=models.CASCADE)
+    fecha = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        unique_together = ('usuario', 'voluntariado')
+
+    def __str__(self):
+        return f"{self.usuario.username} → {self.voluntariado.nombre}"
