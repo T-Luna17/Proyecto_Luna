@@ -6,31 +6,38 @@ const PerfilUsuario = ({ idUsuario }) => {
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
 
-    useEffect(() => {
-        async function fetchUsuario() {
-            try {
-                if (!idUsuario) {
-                    setError("No se encontró el ID del usuario.");
-                    setLoading(false);
-                    return;
-                }
+useEffect(() => {
+    async function fetchUsuario() {
+        try {
+            const usuarioLS = JSON.parse(localStorage.getItem("usuario"));
+            const id = usuarioLS?.id || idUsuario;
 
-                const data = await getData(`usuarios/perfil/usuario/${idUsuario}/`);
-
-                if (!data || data.detail) {
-                    setError("No se pudo cargar el perfil del usuario.");
-                } else {
-                    setUsuario(data);
-                }
-            } catch (error) {
-                setError("Error al conectar con el servidor.");
-            } finally {
+            if (!id) {
+                setError("No se encontró el ID del usuario.");
                 setLoading(false);
+                return;
             }
-        }
 
-        fetchUsuario();
-    }, [idUsuario]);
+            const data = await getData(`perfil/usuario/${id}/`);
+            console.log(`datos de perfil usuario:`, data);
+
+            if (!data || data.detail) {
+                setError("No se pudo cargar el perfil del usuario.");
+            } else {
+                setUsuario(data);
+            }
+        } catch (error) {
+            console.error(error);
+            setError("Error al conectar con el servidor.");
+        } finally {
+            setLoading(false);
+        }
+    }
+
+    fetchUsuario();
+    if (idUsuario) fetchUsuario();
+}, [idUsuario]);
+
 
     if (loading) return <p className="loading-msg">Cargando perfil del usuario...</p>;
     if (error) return <p className="error-msg">{error}</p>;

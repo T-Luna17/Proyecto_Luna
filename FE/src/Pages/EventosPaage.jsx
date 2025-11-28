@@ -19,14 +19,16 @@ function EventosPage() {
     empresa: localStorage.getItem("idEmpresa") || 1,
   });
 
+  
+ 
   useEffect(() => {
-    cargarEventos();
-  }, []);
-
-  async function cargarEventos() {
-    const data = await getData("voluntariados/");
+     async function cargarEventos() {
+    const data = await getData("voluntariados/voluntariados/");
     setEventos(data);
   }
+  
+    cargarEventos();
+  }, []);
 
   function handleChange(e) {
     setFormData({

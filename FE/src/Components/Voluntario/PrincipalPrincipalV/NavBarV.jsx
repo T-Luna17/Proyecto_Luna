@@ -33,7 +33,7 @@ function NavbarVoluntario({ darkMode, setDarkMode, usuario, onSearch }) {
         </button>
 
         <span className="navbar-name">
-          {usuario?.nombre || "Voluntario"}
+          {usuario?.nombre || "usuario"}
         </span>
       </div>
     </header>

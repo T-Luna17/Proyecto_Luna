@@ -14,7 +14,7 @@ function CalendarPage() {
 
   useEffect(() => {
     async function fetchEventos() {
-      const data = await getData("voluntariados/"); 
+      const data = await getData("voluntariados/voluntariados/"); 
       setEventos(data);
     }
     fetchEventos();

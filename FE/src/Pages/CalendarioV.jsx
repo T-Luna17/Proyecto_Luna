@@ -13,7 +13,7 @@ function CalendarioVoluntario({ darkMode }) {
   useEffect(() => {
     const fetchEventos = async () => {
       try {
-        const data = await getData("voluntariados/");
+        const data = await getData("voluntariados/voluntariados/");
         setEventos(data);
       } catch (err) {
         console.error("Error cargando eventos", err);

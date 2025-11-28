@@ -8,8 +8,6 @@ function DashboardVoluntario() {
       desc: "Primeros pasos, consejos y oportunidades para comenzar a ayudar.",
       author: "Fundación Vida",
       avatar: "FE/proyecto_fe/src/img/astronaut.png",
-      comments: 8,
-      views: 1900,
     },
     {
       category: "Motivación",
@@ -17,8 +15,6 @@ function DashboardVoluntario() {
       desc: "Historias reales de voluntarios que lograron cambios significativos.",
       author: "Red Solidaria",
       avatar: "FE/proyecto_fe/src/img/astronaut.png",
-      comments: 14,
-      views: 2600,
     },
     {
       category: "Aprendizaje",
@@ -26,8 +22,6 @@ function DashboardVoluntario() {
       desc: "Comunicación, liderazgo, trabajo en equipo y más.",
       author: "Impacto Global",
       avatar: "FE/proyecto_fe/src/img/astronaut.png",
-      comments: 10,
-      views: 2100,
     },
   ];
 

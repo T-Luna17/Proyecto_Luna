@@ -8,21 +8,21 @@ const PerfilEmpresa = ({ idEmpresa }) => {
     useEffect(() => {
         async function fetchEmpresa() {
             try {
-                const data = await getData(`usuarios/perfil/empresa/${idEmpresa}/`);
-
+                const data = await getData(`empresas/perfil/${JSON.parse(localStorage.getItem('empresaData')).id}/`);
+                console.log(`datos de perfil ${data}`);
+                
                 if (!data || data.detail) {
                     setError("No se pudo cargar la información de la empresa.");
                 } else {
                     setEmpresa(data);
                 }
             } catch (error) {
-                setError("Error al conectar con el servidor.");
+                console.error(error);
+                
             }
         }
-
+        fetchEmpresa()
         if (idEmpresa) fetchEmpresa();
-        else setError("No se encontró el ID de la empresa.");
-
     }, [idEmpresa]);
 
 

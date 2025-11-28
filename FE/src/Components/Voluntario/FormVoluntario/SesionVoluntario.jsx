@@ -24,7 +24,7 @@ const SesionV = () => {
             const loginData = { username, password }
             const response = await postData("usuarios/validar-usuario", loginData)
             if (response && response.id) {
-                navigate(`/pagina-principal`)
+                navigate(`/PaginaPrincipalVoluntario`)
             } else {
                 setError("Credenciales inválidas")
             }

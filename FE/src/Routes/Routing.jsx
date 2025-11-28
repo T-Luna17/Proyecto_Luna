@@ -11,6 +11,7 @@ import PerfilEmpresa from "../Pages/PerfilEmpresa"
 import CalendarioE from '../Pages/CalendarPage'
 import EventosEmpresa from "../Pages/EventosPaage"
 import Voluntarios from "../Pages/VoluntarioPages"
+import PaginaPrincipalVoluntario from '../Pages/PrincipalVoluntario';
 
 const Routing = ()=>{
     return(
@@ -28,6 +29,7 @@ const Routing = ()=>{
                 <Route path='/CalendarioE' element={<CalendarioE/>}/>
                 <Route path='/EventosEmpresa' element={<EventosEmpresa/>}/>
                 <Route path='/Voluntarios' element={<Voluntarios/>}/>
+                <Route path='/PaginaPrincipalVoluntario' element={<PaginaPrincipalVoluntario/>}/>
             </Routes>
         </Router>
     )
