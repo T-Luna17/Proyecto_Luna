@@ -1,27 +1,32 @@
-import { FaCommentDots, FaEye } from "react-icons/fa";
-
-function BlogCard({ category, title, desc, author, avatar, comments, views }) {
+function BlogCard({
+  nombre,
+  descripcion_corta,
+  descripcion_larga,
+  fecha_inicio,
+  fecha_fin,
+  ubicacion,
+  imagen
+}) {
   return (
     <div className="blog-card">
-      <p className="blog-category">{category}</p>
-      <h3 className="blog-title">{title}</h3>
-      <p className="blog-desc">{desc}</p>
-      <div className="blog-footer">
-        <div className="blog-author">
-          <img src={avatar} alt={author} className="blog-avatar" />
-          <span>{author}</span>
-        </div>
-        <div className="blog-stats">
-          <span className="blog-stat">
-            <FaCommentDots /> {comments}
-          </span>
-          <span className="blog-stat">
-            <FaEye /> {views}
-          </span>
-        </div>
+      {imagen && (
+        <img src={imagen} alt={nombre} className="blog-image" />
+      )}
+
+      <h3 className="blog-title">{nombre}</h3>
+
+      <p className="blog-desc">{descripcion_corta}</p>
+
+      <div className="blog-info">
+        <p><strong>Inicio:</strong> {fecha_inicio}</p>
+        <p><strong>Fin:</strong> {fecha_fin}</p>
+        <p><strong>Ubicación:</strong> {ubicacion}</p>
       </div>
+      {descripcion_larga && (
+        <p className="blog-desc-long">{descripcion_larga}</p>
+      )}
     </div>
   );
 }
 
-export default BlogCard
+export default BlogCard;

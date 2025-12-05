@@ -1,326 +1,219 @@
-/* ===========================
-   VARIABLES PRINCIPALES
-   =========================== */
+/* =====================================================
+   VARIABLES (modo claro y oscuro)
+===================================================== */
 :root {
-  /* 🌞 MODO CLARO */
-  --color-bg: linear-gradient(135deg, #f9fffe, #eef3ff);
-  --color-surface: #ffffff;
-  --color-border: #e6e9f0;
-  --color-primary: #00bfa6;
-  --color-text: #2c2c2c;
-  --color-subtext: #666;
-  --color-hover: #e6fffa;
-  --shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+  --bg-main: #f4f6f9;
+  --text-main: #1a1a1a;
+  --color-primary: #1976d2;
+  --sidebar-bg: #ffffff;
+  --navbar-bg: #ffffff;
+  --card-bg: #ffffff;
+  --border-soft: #e3e3e3;
 }
 
-/* 🌙 MODO OSCURO */
 .dark-mode {
-  --color-bg: linear-gradient(135deg, #0a0f1e, #10192a);
-  --color-surface: #141d2f;
-  --color-border: #1e2a3b;
-  --color-primary: #00e0c3;
-  --color-text: #e6f6f3;
-  --color-subtext: #aab7c4;
-  --color-hover: rgba(0, 191, 166, 0.1);
-  --shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  --bg-main: #121212;
+  --text-main: #e6e6e6;
+  --color-primary: #64b5f6;
+  --sidebar-bg: #1e1e1e;
+  --navbar-bg: #1e1e1e;
+  --card-bg: #1f1f1f;
+  --border-soft: #333;
 }
 
-/* ===========================
-   GLOBALES
-   =========================== */
-@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap");
-
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
+/* =====================================================
+   RESET & GENERAL
+===================================================== */
 body {
+  margin: 0;
   font-family: "Poppins", sans-serif;
-  background: var(--color-bg);
-  color: var(--color-text);
-  transition: all 0.4s ease;
+  background: var(--bg-main);
+  color: var(--text-main);
+  transition: background 0.3s ease, color 0.3s ease;
 }
 
-.app-container {
+.layout {
   display: flex;
-  min-height: 100vh;
-  transition: background 0.4s ease;
+  height: 100vh;
+  overflow: hidden;
 }
 
-.main-content {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-}
-
-/* ===========================
+/* =====================================================
    SIDEBAR
-   =========================== */
+===================================================== */
 .sidebar {
-  width: 230px;
-  background: var(--color-surface);
-  border-right: 1px solid var(--color-border);
-  padding: 2rem 1rem;
-  position: relative;
-  right:5px;
-  top: 20px;
-  box-shadow: 2px 0 6px rgba(0, 0, 0, 0.05);
-  backdrop-filter: blur(10px);
-  transition: all 0.4s ease;
+  width: 250px;
+  height: 100vh;
+  background: var(--sidebar-bg);
+  border-right: 1px solid var(--border-soft);
+  padding: 1.5rem 1rem;
+  position: fixed;
+  left: 0;
+  top: 60px;
+  transition: background 0.3s ease, color 0.3s ease;
 }
 
 .sidebar-title {
-  font-size: 1.8rem;
-  font-weight: 700;
+  font-size: 1.7rem;
+  font-weight: bold;
   color: var(--color-primary);
+  text-align: center;
   margin-bottom: 2rem;
 }
 
 .sidebar-nav {
   display: flex;
   flex-direction: column;
-  gap: 0.75rem;
+  gap: 12px;
 }
 
 .sidebar-btn {
+  width: 100%;
+  background: var(--card-bg);
+  border: 1px solid var(--border-soft);
+  padding: 12px;
+  border-radius: 10px;
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--text-main);
   display: flex;
   align-items: center;
-  gap: 0.8rem;
-  background: transparent;
-  border: none;
-  font-size: 1rem;
-  font-weight: 500;
-  color: var(--color-text);
-  padding: 0.7rem 1rem;
-  border-radius: 10px;
-  transition: all 0.3s ease;
+  gap: 12px;
   cursor: pointer;
+  transition: background 0.25s ease, transform 0.25s ease;
 }
 
 .sidebar-btn:hover {
-  background: var(--color-hover);
-  color: var(--color-primary);
+  background: var(--color-primary);
+  color: white;
+  transform: translateX(5px);
 }
 
-.sidebar-icon {
-  color: var(--color-primary);
+.sidebar-icon,
+.sidebar-profile-icon {
+  font-size: 20px;
 }
 
-/* ===========================
+/* =====================================================
+   CONTENT AREA (lo que está a la derecha del sidebar)
+===================================================== */
+.content-area {
+  margin-left: 250px;
+  width: calc(100% - 250px);
+  display: flex;
+  flex-direction: column;
+}
+.content-area .usuario{
+  background-color: #2571c7;
+  border-radius: 8px;
+  padding: 10px;
+  margin-bottom: 15px;
+  color: var(--text-main);
+  font-size: 14px;
+}
+
+/* =====================================================
    NAVBAR
-   =========================== */
+===================================================== */
 .navbar {
+  background: var(--navbar-bg);
+  border-bottom: 1px solid var(--border-soft);
+  padding: 12px 20px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1rem 2rem;
-  background: var(--color-surface);
-  border-bottom: 1px solid var(--color-border);
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
-  backdrop-filter: blur(10px);
-  transition: all 0.4s ease;
+  height: 65px;
+  transition: background 0.3s ease, color 0.3s ease;
 }
 
+/* --- Left side (search) --- */
 .navbar-left {
   display: flex;
   align-items: center;
-  gap: 0.75rem;
-}
-
-.navbar-input {
-  width: 920px;
-  margin-top: 20px;
-  padding: 0.6rem 1rem;
-  border: 1px solid var(--color-border);
-  border-radius: 14px;
-  background: transparent;
-  font-size: 0.95rem;
-  color: var(--color-text);
-  outline: none;
-  transition: all 0.3s ease;
-}
-
-.navbar-input:focus {
-  border-color: var(--color-primary);
-  background: #fff;
-}
-
-.dark-mode .navbar-input:focus {
-  background: #1b2433;
-}
-
-.navbar-right {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
+  gap: 10px;
 }
 
 .navbar-icon {
+  font-size: 20px;
   color: var(--color-primary);
-  font-size: 1.2rem;
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition: transform 0.2s ease;
 }
 
 .navbar-icon:hover {
   transform: scale(1.15);
 }
 
-.navbar-avatar {
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  border: 2px solid var(--color-primary);
+.navbar-input {
+  padding: 8px 12px;
+  border: 1px solid var(--border-soft);
+  border-radius: 8px;
+  background: var(--card-bg);
+  color: var(--text-main);
+  outline: none;
+  font-size: 14px;
+  width: 550px;
+  transition: border 0.2s ease;
+}
+
+.navbar-input:focus {
+  border-color: var(--color-primary);
+}
+
+/* --- Right side --- */
+.navbar-right {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.dark-toggle {
+  color: var(--color-primary);
+  background: none;
+  border: none;
+  font-size: 22px;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.dark-toggle:hover {
+  transform: scale(1.2);
 }
 
 .navbar-name {
-  font-weight: 600;
-  color: var(--color-text);
-}
-
-/* ===========================
-   DASHBOARD
-   =========================== */
-.dashboard {
-  padding: 2rem;
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 2rem;
-  transition: all 0.4s ease;
-}
-
-/* --- Sección pequeña de perfil --- */
-
-.sidebar-profile-mini {
-  margin-top: auto;
-  padding: 14px;
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  cursor: pointer;
-  border-top: 1px solid #ffffff25;
-  color: white;
-  transition: background 0.2s;
-}
-
-.sidebar-profile-mini:hover {
-  background: #ffffff15;
-}
-
-.sidebar-profile-icon {
-  font-size: 26px;
-}
-
-/* ===========================
-   BLOG CARD
-   =========================== */
-.blog-card {
- 
-  background: var(--color-surface);
-  border-radius: 20px;
-  box-shadow: var(--shadow);
-  padding: 2rem 1.5rem;
-  transition: all 0.3s ease;
-  text-align: left;
-  cursor: pointer;
-  position: relative;
-  top: 100px;
-}
-
-.blog-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 10px 18px rgba(0, 191, 166, 0.15);
-}
-
-.blog-category {
-  font-size: 0.85rem;
-  text-transform: uppercase;
-  color: var(--color-primary);
-  font-weight: 600;
-  margin-bottom: 0.75rem;
-}
-
-.blog-title {
-  font-size: 1.2rem;
-  font-weight: 700;
-  color: var(--color-text);
-  margin-bottom: 0.5rem;
-}
-
-.blog-desc {
-  font-size: 0.9rem;
-  color: var(--color-subtext);
-  margin-bottom: 1.5rem;
-  line-height: 1.5;
-}
-
-.blog-footer {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.blog-author {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
   font-weight: 500;
-  color: var(--color-text);
+  font-size: 15px;
 }
 
-.blog-avatar {
-  width: 36px;
-  height: 36px;
-  border-radius: 50%;
+/* =====================================================
+   DASHBOARD
+===================================================== */
+.dashboard {
+  padding: 1.5rem;
+  overflow-y: auto;
+  height: calc(100vh - 65px);
+  background-color: #217388;
+  transition: background 0.3s ease;
 }
 
-.blog-stats {
-  display: flex;
-  gap: 1rem;
-  color: var(--color-subtext);
-  font-size: 0.85rem;
+/* =====================================================
+   CARDS (BlogCard y similares)
+===================================================== */
+.card {
+  background: var(--card-bg);
+  border: 1px solid var(--border-soft);
+  border-radius: 14px;
+  padding: 1.2rem;
+  margin-bottom: 1rem;
+  transition: background 0.3s ease, border 0.3s ease;
 }
 
-.blog-stat {
-  display: flex;
-  align-items: center;
-  gap: 0.4rem;
+/* Scroll bonito */
+::-webkit-scrollbar {
+  width: 8px;
 }
 
-/* ===========================
-   BOTÓN MODO OSCURO
-   =========================== */
-.theme-toggle {
+::-webkit-scrollbar-thumb {
   background: var(--color-primary);
-  border: none;
-  color: #fff;
-  font-weight: 600;
-  border-radius: 10px;
-  padding: 0.4rem 0.8rem;
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
-
-.theme-toggle:hover {
-  transform: scale(1.05);
-  background: #00a68c;
-}
-
-/* ===========================
-   RESPONSIVE
-   =========================== */
-@media (max-width: 768px) {
-  .sidebar {
-    display: none;
-  }
-
-  .navbar-input {
-    width: 200px;
-  }
-
-  .dashboard {
-    padding: 1rem;
-  }
+  border-radius: 20px;
 }

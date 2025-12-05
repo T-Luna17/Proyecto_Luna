@@ -1,43 +1,56 @@
+import { useEffect, useState } from "react";
 import BlogCard from "./BlogCard";
+import { getData } from "../../../Services/Fetch"; 
 
 function Dashboard() {
-  const blogs = [
-    {
-      category: "Comunidad",
-      title: "Cómo liderar un voluntariado exitoso",
-      desc: "Consejos para fortalecer la unión y efectividad del equipo en proyectos sociales.",
-      author: "Laura Méndez",
-      avatar: "FE/proyecto_fe/src/img/astronaut.png",
-      comments: 12,
-      views: 2300,
-    },
-    {
-      category: "Sostenibilidad",
-      title: "Pequeñas acciones, grandes impactos",
-      desc: "Historias de voluntarios que transformaron comunidades con proyectos verdes.",
-      author: "Carlos Rojas",
-      avatar: "FE/proyecto_fe/src/img/astronaut.png",
-      comments: 9,
-      views: 1800,
-    },
-    {
-      category: "Inspiración",
-      title: "Voluntariado digital: ayudar desde casa",
-      desc: "Cómo la tecnología abre puertas para apoyar causas desde cualquier lugar del mundo.",
-      author: "Ana Torres",
-      avatar: "FE/proyecto_fe/src/img/astronaut.png",
-      comments: 15,
-      views: 2900,
-    },
-  ];
+  const [eventos, setEventos] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    async function fetchEventos() {
+      try {
+        const data = await getData("voluntariados/voluntariados/");
+
+        if (!data || data.detail) {
+          setError("No se pudo cargar la lista de eventos.");
+        } else {
+          setEventos(data);
+        }
+      } catch (err) {
+        console.error(err);
+        setError("Error al obtener los eventos.");
+      } finally {
+        setLoading(false);
+      }
+    }
+
+    fetchEventos();
+  }, []);
+
+  if (loading) return <p>Cargando eventos...</p>;
+  if (error) return <p>{error}</p>;
 
   return (
     <main className="dashboard">
-      {blogs.map((b, i) => (
-        <BlogCard key={i} {...b} />
-      ))}
+      {eventos.length === 0 ? (
+        <p>No hay eventos creados aún.</p>
+      ) : (
+        eventos.map((ev) => (
+          <BlogCard
+            key={ev.id}
+            nombre={ev.nombre}
+            descripcion_corta={ev.descripcion_corta}
+            descripcion_larga={ev.descripcion_larga}
+            fecha_inicio={ev.fecha_inicio}
+            fecha_fin={ev.fecha_fin}
+            ubicacion={ev.ubicacion}
+            imagen={ev.imagen}       
+          />
+        ))
+      )}
     </main>
   );
 }
 
-export default Dashboard
+export default Dashboard;

@@ -1,8 +1,8 @@
-import Sidebar from "../Components/Empresa/PaginaPrincipalE/Sidebar";
-import Navbar from "../Components/Empresa/PaginaPrincipalE/Navbar";
-import PerfilEmpresa from "../Components/Empresa/PerfilEmpresa";
-import "../Style/Perfil.css";
-import "../Style/Principal.css"
+import Sidebar from "../../Components/Empresa/PaginaPrincipalE/Sidebar";
+import Navbar from "../../Components/Empresa/PaginaPrincipalE/Navbar";
+import PerfilEmpresa from "../../Components/Empresa/PerfilEmpresa";
+import "../../Style/Perfil.css";
+import "../../Style/Principal.css"
 
 function PerfilEmpresaPage() {
     const idEmpresa = localStorage.getItem("idEmpresa");

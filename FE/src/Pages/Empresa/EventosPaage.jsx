@@ -1,12 +1,14 @@
 import { useEffect, useState } from "react";
-import Sidebar from "../Components/Empresa/PaginaPrincipalE/Sidebar";
-import Navbar from "../Components/Empresa/PaginaPrincipalE/Navbar";
-import { getData, postData } from "../Services/Fetch";
-import "../style/Eventos.css";
+import Sidebar from "../../Components/Empresa/PaginaPrincipalE/Sidebar";
+import Navbar from "../../Components/Empresa/PaginaPrincipalE/Navbar";
+import { getData, postData } from "../../Services/Fetch";
+import "../../Style/Eventos.css";
 
 function EventosPage() {
   const [eventos, setEventos] = useState([]);
   const [formVisible, setFormVisible] = useState(false);
+  const [darkMode, setDarkMode] = useState(false);
+  const usuario = JSON.parse(localStorage.getItem("empresaData"));
 
   const [formData, setFormData] = useState({
     nombre: "",
@@ -15,7 +17,8 @@ function EventosPage() {
     fecha_inicio: "",
     fecha_fin: "",
     ubicacion: "",
-    voluntario: 1, // Ajustar según tu lógica
+    imagen_url: "" ,
+    voluntario: 1, 
     empresa: localStorage.getItem("idEmpresa") || 1,
   });
 
@@ -30,6 +33,10 @@ function EventosPage() {
     cargarEventos();
   }, []);
 
+  useEffect(() => {
+    document.body.classList.toggle("dark-mode", darkMode);
+  }, [darkMode]);
+
   function handleChange(e) {
     setFormData({
       ...formData,
@@ -39,10 +46,9 @@ function EventosPage() {
 
   async function crearEvento(e) {
     e.preventDefault();
-
-    await postData("voluntariados/crear/", formData);
+    console.log("Creando evento con datos:", formData);
+    await postData("voluntariados/voluntariados/crear/", formData);
     setFormVisible(false);
-    cargarEventos();
 
     // Limpiar formulario
     setFormData({
@@ -52,6 +58,7 @@ function EventosPage() {
       fecha_inicio: "",
       fecha_fin: "",
       ubicacion: "",
+      imagen_url: "" ,
       voluntario: 1,
       empresa: localStorage.getItem("idEmpresa") || 1,
     });
@@ -62,7 +69,11 @@ function EventosPage() {
       <Sidebar />
 
       <div className="main-content">
-        <Navbar />
+        <Navbar
+          darkMode={darkMode}
+          setDarkMode={setDarkMode}
+          usuario={usuario}
+        />
 
         <h2>Eventos</h2>
 
@@ -124,6 +135,14 @@ function EventosPage() {
               value={formData.ubicacion}
               onChange={handleChange}
               required
+            />
+            
+            <input
+              type="text"
+              name="imagen_url"
+              placeholder="URL de la imagen"
+              value={formData.imagen_url}
+              onChange={handleChange}
             />
 
             <button type="submit" className="guardar-btn">

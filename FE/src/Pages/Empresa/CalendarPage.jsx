@@ -1,12 +1,12 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import Sidebar from "../Components/Empresa/PaginaPrincipalE/Sidebar/";
-import Navbar from "../Components/Empresa/PaginaPrincipalE/Navbar/";
+import Sidebar from "../../Components/Empresa/PaginaPrincipalE/Sidebar/";
+import Navbar from "../../Components/Empresa/PaginaPrincipalE/Navbar/";
 import Calendar from "react-calendar";
 import "react-calendar/dist/Calendar.css";
-import "../Style/CalendarioVoluntario.css";
+import "../../Style/CalendarioVoluntario.css";
 
-import { getData } from "../Services/Fetch"; 
+import { getData } from "../../Services/Fetch"; 
 
 function CalendarPage() {
   const [eventos, setEventos] = useState([]);

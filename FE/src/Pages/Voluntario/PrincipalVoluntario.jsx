@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
-import SidebarVoluntario from "../Components/Voluntario/PrincipalPrincipalV/SideBarV";
-import NavbarVoluntario from "../Components/Voluntario/PrincipalPrincipalV/NavBarV";
-import BlogCard from "../Components/Voluntario/PrincipalPrincipalV/BlogCardV"; 
-import { getData } from "../Services/Fetch"; 
-import "../Style/Principal.css"
+import SidebarVoluntario from "../../Components/Voluntario/PrincipalPrincipalV/SideBarV";
+import NavbarVoluntario from "../../Components/Voluntario/PrincipalPrincipalV/NavBarV";
+import BlogCard from "../../Components/Voluntario/PrincipalPrincipalV/BlogCardV"; 
+import { getData } from "../../Services/Fetch"; 
+import "../../Style/Principal.css";
 
 function PaginaPrincipalVoluntario() {
   const [darkMode, setDarkMode] = useState(false);

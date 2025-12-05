@@ -18,17 +18,11 @@ function SidebarVoluntario() {
         <button className="sidebar-btn" onClick={() => navigate("/MisActividades")}>
           <FaHandsHelping className="sidebar-icon" /> Mis Actividades
         </button>
-
-        <button className="sidebar-btn" onClick={() => navigate("/Eventos")}>
-          <FaHome className="sidebar-icon" /> Eventos
+  
+        <button className="sidebar-btn" onClick={() => navigate("/PerfilVoluntario")}>
+          <FaUserCircle className="sidebar-profile-icon" /> Perfil
         </button>
       </nav>
-
-      <div className="sidebar-profile-mini" onClick={() => navigate("/PerfilVoluntario")}>
-        <FaUserCircle className="sidebar-profile-icon" />
-        <span>Perfil</span>
-      </div>
-
     </aside>
   );
 }

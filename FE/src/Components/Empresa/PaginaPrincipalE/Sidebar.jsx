@@ -22,13 +22,12 @@ function Sidebar() {
         <button className="sidebar-btn" onClick={() => navigate("/Voluntarios")}>
           <FaUsers className="sidebar-icon" /> Voluntarios
         </button>
+      
+        <button className="sidebar-btn" onClick={() => navigate("/PerfilEmpresa")}>
+          <FaUserCircle className="sidebar-profile-icon" /> Perfil
+        </button>
+
       </nav>
-
-      <div className="sidebar-profile-mini" onClick={() => navigate("/PerfilEmpresa")}>
-        <FaUserCircle className="sidebar-profile-icon" />
-        <span>Perfil</span>
-      </div>
-
     </aside>
   );
 }

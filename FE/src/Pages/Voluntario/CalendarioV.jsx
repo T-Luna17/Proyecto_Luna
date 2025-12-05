@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
 import Calendar from "react-calendar";
 import "react-calendar/dist/Calendar.css";
-import SidebarVoluntario from "../Components/Voluntario/PrincipalPrincipalV/SideBarV";
-import NavbarVoluntario from "../Components/Voluntario/PrincipalPrincipalV/NavBarV";
-import { getData } from "../Services/Fetch";
-import "../Style/CalendarioVoluntario.css";
+import SidebarVoluntario from "../../Components/Voluntario/PrincipalPrincipalV/SideBarV";
+import NavbarVoluntario from "../../Components/Voluntario/PrincipalPrincipalV/NavBarV";
+import { getData } from "../../Services/Fetch";
+import "../../Style/CalendarioVoluntario.css";
 
 function CalendarioVoluntario({ darkMode }) {
   const [date, setDate] = useState(new Date());

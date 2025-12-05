@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
-import Sidebar from "../Components/Empresa/PaginaPrincipalE/Sidebar";
-import Navbar from "../Components/Empresa/PaginaPrincipalE/Navbar";
-import { getData } from "../Services/Fetch";
-import "../style/Voluntarios.css"
+import Sidebar from "../../Components/Empresa/PaginaPrincipalE/Sidebar";
+import Navbar from "../../Components/Empresa/PaginaPrincipalE/Navbar";
+import { getData } from "../../Services/Fetch";
+import "../../Style/Voluntarios.css"
 
 function VoluntariosPage() {
   const [voluntarios, setVoluntarios] = useState([]);

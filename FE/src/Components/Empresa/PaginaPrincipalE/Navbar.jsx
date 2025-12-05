@@ -1,24 +1,39 @@
 import { FaSearch, FaMoon, FaSun } from "react-icons/fa";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 function Navbar({ darkMode, setDarkMode, usuario, onSearch }) {
   const [texto, setTexto] = useState("");
 
-  const handleSearch = (e) => {
-    const value = e.target.value;
-    setTexto(value);
-    onSearch(value); // 🔍 manda el texto hacia afuera
+  useEffect(() => {
+    if (darkMode) {
+      document.body.classList.add("dark-mode");
+    } else {
+      document.body.classList.remove("dark-mode");
+    }
+  }, [darkMode]);
+
+  const handleInputChange = (e) => {
+    setTexto(e.target.value);
+  };
+
+  const handleSearchClick = () => {
+    onSearch(texto);
   };
 
   return (
     <header className="navbar">
       <div className="navbar-left">
-        <FaSearch className="navbar-icon" />
+        <FaSearch
+          className="navbar-icon"
+          onClick={handleSearchClick}
+          style={{ cursor: "pointer" }}
+        />
+
         <input
           type="text"
           placeholder="Buscar..."
           value={texto}
-          onChange={handleSearch}
+          onChange={handleInputChange}
           className="navbar-input"
         />
       </div>
@@ -41,3 +56,4 @@ function Navbar({ darkMode, setDarkMode, usuario, onSearch }) {
 }
 
 export default Navbar;
+
