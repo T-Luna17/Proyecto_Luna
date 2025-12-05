@@ -8,6 +8,7 @@ class Voluntariado(models.Model):
     fecha_inicio = models.DateField(null=False)
     fecha_fin = models.DateField(null=False)
     ubicacion = models.CharField(max_length=255, null=False)
+    imagen_url = models.TextField( null=False)
     voluntario = models.ForeignKey('usuarios.Usuario', on_delete=models.CASCADE)
     empresa = models.ForeignKey('empresas.Empresa', on_delete=models.CASCADE)
     
