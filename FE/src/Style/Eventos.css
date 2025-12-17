@@ -43,6 +43,7 @@ body {
   width: 100%;
   height: 100vh;
   background: var(--color-bg);
+  overflow: hidden;
 }
 
 /* =========================== SIDEBAR =========================== */
@@ -50,21 +51,20 @@ body {
   width: 250px;
   background: var(--color-surface);
   border-right: 1px solid var(--color-border);
-  padding: 20px;
+  padding: 0;
+  height: 100vh;
+  position: fixed;
+  left: 0;
+  top: 0;
   box-shadow: var(--shadow);
 }
 
 /* =========================== ÁREA DE CONTENIDO =========================== */
 .content-area {
+  margin-left: 250px;
   flex: 1;
   display: flex;
   flex-direction: column;
-  background: var(--color-bg);
-}
-
-h2{
-  margin-bottom: 20px;
-  background-color: #00bfa6;
 }
 
 /* =========================== NAVBAR =========================== */
@@ -76,9 +76,13 @@ h2{
   align-items: center;
   justify-content: space-between;
   box-shadow: var(--shadow);
+  position: fixed;
+  top: 0;
+  left: 250px;
+  width: calc(100% - 250px);
+  z-index: 10;
 }
 
-/* Nombre del usuario */
 .navbar .usuario-nombre {
   color: var(--color-text);
   font-weight: 600;
@@ -90,19 +94,20 @@ h2{
   flex: 1;
   padding: 25px;
   overflow-y: auto;
-  background: transparent;
-  position: relative;
-  top: 80px;
+  margin-top: 80px;
 }
 
-/* =========================== HOVER GENÉRICO =========================== */
-.hover-effect:hover {
-  background: var(--color-hover);
+h2 {
+  margin-bottom: 20px;
+  padding: 10px 15px;
+  background-color: var(--color-primary);
+  color: #0d151f;
+  width: fit-content;
+  border-radius: 12px;
+  font-weight: 700;
 }
 
-/* ===========================
-   BOTÓN: + AGREGAR EVENTO
-   =========================== */
+/* =========================== BOTÓN AGREGAR EVENTO =========================== */
 .agregar-btn {
   background: var(--color-primary);
   color: #0d151f;
@@ -126,10 +131,7 @@ h2{
   transform: translateY(1px);
 }
 
-
-/* ===========================
-   TARJETA DEL FORMULARIO
-   =========================== */
+/* =========================== TARJETA DEL FORMULARIO =========================== */
 .form-card {
   background: var(--color-surface);
   padding: 1.8rem;
@@ -149,82 +151,52 @@ h2{
   margin-bottom: 0.3rem;
 }
 
-
-/* ===========================
-   INPUTS & TEXTAREAS
-   =========================== */
-
+/* Inputs */
 .form-card input,
 .form-card textarea {
   width: 100%;
   padding: 0.8rem 1rem;
-
-  background: #0f1626; 
+  background: #0f1626;
   color: var(--color-text);
-
   border: 2px solid var(--color-border);
   border-radius: 12px;
-
   font-size: 0.95rem;
   outline: none;
-
   transition: all 0.2s ease;
 }
 
-/* Hover */
 .form-card input:hover,
 .form-card textarea:hover {
   border-color: var(--color-primary);
 }
 
-/* Focus */
 .form-card input:focus,
 .form-card textarea:focus {
   border-color: var(--color-primary);
   box-shadow: 0 0 6px rgba(0, 224, 195, 0.4);
 }
 
-/* Placeholder */
-.form-card input::placeholder,
-.form-card textarea::placeholder {
-  color: var(--color-subtext);
-  opacity: 0.8;
-}
-
-/* Textarea tamaño */
 .form-card textarea {
   height: 90px;
   resize: none;
 }
 
-
-/* ===========================
-   LABELS
-   =========================== */
-
 .form-card label {
   color: var(--color-text);
   font-weight: 600;
-  margin-top: 0.5rem;
 }
 
-
-/* ===========================
-   BOTÓN GUARDAR
-   =========================== */
-
+/* =========================== BOTÓN GUARDAR =========================== */
 .guardar-btn {
   background: var(--color-primary);
   color: #0d151f;
   border: none;
   padding: 0.9rem;
   margin-top: 0.5rem;
-
   font-size: 1rem;
   font-weight: 700;
   border-radius: 12px;
   cursor: pointer;
-
   transition: all 0.25s ease;
   box-shadow: var(--shadow);
 }
@@ -238,11 +210,75 @@ h2{
   transform: translateY(1px);
 }
 
+/* =========================== LISTA DE EVENTOS =========================== */
+.evento-lista {
+  margin-top: 1.5rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 18px;
+}
 
-/* ===========================
-   ANIMACIÓN AL MOSTRAR
-   =========================== */
+/* Tarjeta */
+.evento-card {
+  background: var(--color-surface);
+  padding: 1.2rem;
+  border-radius: 16px;
+  box-shadow: var(--shadow);
+  border: 1px solid var(--color-border);
+  transition: transform 0.2s ease, background 0.2s;
+}
 
+.evento-card:hover {
+  transform: translateY(-4px);
+  background: var(--color-hover);
+}
+
+/* Imagen del evento */
+.evento-img {
+  width: 100%;
+  height: 160px;
+  object-fit: cover;
+  border-radius: 14px;
+  margin-bottom: 12px;
+  border: 1px solid var(--color-border);
+}
+
+.btns-evento {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 12px;
+}
+
+.btn-editar,
+.btn-borrar {
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: 0.2s;
+}
+
+.btn-editar {
+  background: #00bfa6;
+  color: #0b1a1d;
+}
+
+.btn-editar:hover {
+  background: #00e8c8;
+}
+
+.btn-borrar {
+  background: #ff4d4d;
+  color: white;
+}
+
+.btn-borrar:hover {
+  background: #ff6666;
+}
+
+
+/* Animación */
 @keyframes slideDown {
   from {
     opacity: 0;
@@ -253,4 +289,5 @@ h2{
     transform: translateY(0);
   }
 }
+
 

@@ -1,5 +1,5 @@
 import SesionV from "../Components/Voluntario/FormVoluntario/SesionVoluntario";
-import "../style/RyI.css"
+import "../Style/RyI.css"
 
 const InicioVoluntario = () =>{
     return(

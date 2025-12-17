@@ -1,5 +1,5 @@
 import RegistroV from "../Components/Voluntario/FormVoluntario/RegistroVoluntario";
-import "../style/RyI.css"
+import "../Style/RyI.css"
 
 const FormVoluntario = () =>{
     return(

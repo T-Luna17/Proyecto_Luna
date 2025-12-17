@@ -45,7 +45,7 @@ function Dashboard() {
             fecha_inicio={ev.fecha_inicio}
             fecha_fin={ev.fecha_fin}
             ubicacion={ev.ubicacion}
-            imagen={ev.imagen}       
+            imagen_url={ev.imagen_url}       
           />
         ))
       )}

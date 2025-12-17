@@ -1,5 +1,5 @@
 import InicioR from "../Components/LP/InicioR";
-import "../style/RyI.css"
+import "../Style/RyI.css"
 
 const Inicio = () =>{
     return(

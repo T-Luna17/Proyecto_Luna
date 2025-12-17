@@ -3,7 +3,7 @@ import Hero from "../Components/LP/Hero";
 import About from "../Components/LP/About";
 import Proyectos from "../Components/LP/Proyectos"
 import Footer from "../Components/LP/Footer";
-import "../style/Lading.css"
+import "../Style/Lading.css";
 
 function Lading() {
   return (

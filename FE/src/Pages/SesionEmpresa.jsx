@@ -1,5 +1,5 @@
 import SesionE from "../Components/Empresa/FormEmpresa/SesionE";
-import "../style/RyI.css"
+import "../Style/RyI.css"
 
 const InicioEmpresa = () =>{
     return(

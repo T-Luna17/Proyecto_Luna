@@ -1,5 +1,5 @@
 import RegistroE from "../Components/Empresa/FormEmpresa/RegistroE";
-import "../style/RyI.css"
+import "../Style/RyI.css"
 
 const FormEmpresa = () =>{
     return(

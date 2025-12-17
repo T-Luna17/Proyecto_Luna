@@ -1,8 +1,10 @@
-import { FaSearch, FaMoon, FaSun } from "react-icons/fa";
+import { FaSearch, FaMoon, FaSun, FaSignOutAlt } from "react-icons/fa";
 import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 function Navbar({ darkMode, setDarkMode, usuario, onSearch }) {
   const [texto, setTexto] = useState("");
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (darkMode) {
@@ -18,6 +20,12 @@ function Navbar({ darkMode, setDarkMode, usuario, onSearch }) {
 
   const handleSearchClick = () => {
     onSearch(texto);
+  };
+
+  const handleLogout = () => {
+    localStorage.removeItem("token");
+    localStorage.removeItem("usuario");
+    navigate("/");
   };
 
   return (
@@ -50,6 +58,15 @@ function Navbar({ darkMode, setDarkMode, usuario, onSearch }) {
         <span className="navbar-name">
           {usuario?.nombre || "Usuario"}
         </span>
+
+        <button
+          className="logout-btn"
+          onClick={handleLogout}
+          aria-label="Cerrar sesión"
+          title="Cerrar sesión"
+        >
+          <FaSignOutAlt />
+        </button>
       </div>
     </header>
   );

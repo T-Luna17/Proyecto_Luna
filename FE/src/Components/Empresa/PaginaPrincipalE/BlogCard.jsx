@@ -5,28 +5,35 @@ function BlogCard({
   fecha_inicio,
   fecha_fin,
   ubicacion,
-  imagen
+  imagen_url
 }) {
   return (
     <div className="blog-card">
-      {imagen && (
-        <img src={imagen} alt={nombre} className="blog-image" />
+
+      {imagen_url && (
+        <img src={imagen_url} alt={nombre} className="blog-image" />
       )}
 
-      <h3 className="blog-title">{nombre}</h3>
+      <div className="blog-content">
 
-      <p className="blog-desc">{descripcion_corta}</p>
+        <h3 className="blog-title">{nombre}</h3>
+        <p className="blog-desc">{descripcion_corta}</p>
 
-      <div className="blog-info">
-        <p><strong>Inicio:</strong> {fecha_inicio}</p>
-        <p><strong>Fin:</strong> {fecha_fin}</p>
-        <p><strong>Ubicación:</strong> {ubicacion}</p>
+        <div className="blog-info">
+          <p><strong>Inicio:</strong> {fecha_inicio}</p>
+          <p><strong>Fin:</strong> {fecha_fin}</p>
+          <p><strong>Ubicación:</strong> {ubicacion}</p>
+        </div>
+
+        {descripcion_larga && (
+          <p className="blog-desc-long">{descripcion_larga}</p>
+        )}
+
       </div>
-      {descripcion_larga && (
-        <p className="blog-desc-long">{descripcion_larga}</p>
-      )}
+
     </div>
   );
 }
 
 export default BlogCard;
+
