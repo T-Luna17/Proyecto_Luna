@@ -1,4 +1,4 @@
-from rest_framework.generics import ListCreateAPIView, ListAPIView
+from rest_framework.generics import ListCreateAPIView, ListAPIView, RetrieveUpdateDestroyAPIView
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
@@ -40,3 +40,9 @@ class VerVoluntariadosInscritos(ListAPIView):
         usuario_id = self.kwargs.get("usuario_id")
         inscripciones = Inscripcion.objects.filter(usuario_id=usuario_id)
         return [i.voluntariado for i in inscripciones]
+    
+
+class VoluntariadoUpdateDeleteView(RetrieveUpdateDestroyAPIView):
+    queryset = Voluntariado.objects.all()
+    serializer_class = VoluntariadoSerializer
+

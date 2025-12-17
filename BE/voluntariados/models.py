@@ -21,7 +21,7 @@ class Inscripcion(models.Model):
     fecha = models.DateTimeField(auto_now_add=True)
 
     class Meta:
-        unique_together = ('usuario', 'voluntariado')
+        db_table = "voluntariados_inscripcion"
 
     def __str__(self):
         return f"{self.usuario.username} → {self.voluntariado.nombre}"
