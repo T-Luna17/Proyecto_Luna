@@ -1,9 +1,8 @@
 import { FaSearch, FaMoon, FaSun, FaSignOutAlt } from "react-icons/fa";
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
-function Navbar({ darkMode, setDarkMode, usuario, onSearch }) {
-  const [texto, setTexto] = useState("");
+function Navbar({ darkMode, setDarkMode, usuario}) {
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -14,14 +13,6 @@ function Navbar({ darkMode, setDarkMode, usuario, onSearch }) {
     }
   }, [darkMode]);
 
-  const handleInputChange = (e) => {
-    setTexto(e.target.value);
-  };
-
-  const handleSearchClick = () => {
-    onSearch(texto);
-  };
-
   const handleLogout = () => {
     localStorage.removeItem("token");
     localStorage.removeItem("usuario");
@@ -30,21 +21,6 @@ function Navbar({ darkMode, setDarkMode, usuario, onSearch }) {
 
   return (
     <header className="navbar">
-      <div className="navbar-left">
-        <FaSearch
-          className="navbar-icon"
-          onClick={handleSearchClick}
-          style={{ cursor: "pointer" }}
-        />
-
-        <input
-          type="text"
-          placeholder="Buscar..."
-          value={texto}
-          onChange={handleInputChange}
-          className="navbar-input"
-        />
-      </div>
 
       <div className="navbar-right">
         <button
