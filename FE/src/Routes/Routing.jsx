@@ -11,7 +11,7 @@ import PerfilEmpresa from "../Pages/Empresa/PerfilEmpresa"
 import CalendarioE from '../Pages/Empresa/CalendarPage'
 import EventosEmpresa from "../Pages/Empresa/EventosPaage"
 import Voluntarios from "../Pages/Empresa/VoluntarioPages"
-import PaginaPrincipalVoluntario from '../Pages/Voluntario/PrincipalVoluntario';
+import PaginaPrincipalVoluntario from '../Pages/Voluntario/PrincipalVoluntario'
 import CalendarioVoluntario from "../Pages/Voluntario/CalendarioV"
 import PerfilVoluntario from "../Pages/Voluntario/PerfilVoluntario"
 

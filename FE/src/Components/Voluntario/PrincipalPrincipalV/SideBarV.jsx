@@ -1,4 +1,4 @@
-import { FaHome, FaCalendarAlt, FaHandsHelping, FaUserCircle } from "react-icons/fa";
+import { FaHome, FaCalendarAlt, FaUserCircle } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 
 function SidebarVoluntario() {
@@ -11,12 +11,15 @@ function SidebarVoluntario() {
 
       <nav className="sidebar-nav">
 
-        <button className="sidebar-btn" onClick={() => navigate("/CalendarioVoluntario")}>
-          <FaCalendarAlt className="sidebar-icon" /> Calendario
+         <button
+          className="sidebar-btn"
+          onClick={() => navigate("/PrincipalVoluntario")}
+        >
+          <FaHome className="sidebar-icon" /> Inicio
         </button>
 
-        <button className="sidebar-btn" onClick={() => navigate("/MisActividades")}>
-          <FaHandsHelping className="sidebar-icon" /> Mis Actividades
+        <button className="sidebar-btn" onClick={() => navigate("/CalendarioVoluntario")}>
+          <FaCalendarAlt className="sidebar-icon" /> Calendario
         </button>
   
         <button className="sidebar-btn" onClick={() => navigate("/PerfilVoluntario")}>

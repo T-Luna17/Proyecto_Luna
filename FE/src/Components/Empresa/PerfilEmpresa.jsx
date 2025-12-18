@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { getData, putData } from "../../Services/Fetch";
+import { getData, patchData } from "../../Services/Fetch";
 
 const PerfilEmpresa = ({ idEmpresa }) => {
   const [empresa, setEmpresa] = useState(null);
@@ -40,7 +40,7 @@ const PerfilEmpresa = ({ idEmpresa }) => {
       setLoading(true);
       const empresaData = JSON.parse(localStorage.getItem("empresaData"));
 
-      const updated = await putData(
+      const updated = await patchData(
         `/empresas/editar/${empresaData.id}/`,
         form
       );

@@ -9,7 +9,6 @@ function BlogCardVoluntario({
   author,
   imagen_url
 }) {
-
   const [loading, setLoading] = useState(false);
   const [msg, setMsg] = useState("");
 
@@ -18,22 +17,24 @@ function BlogCardVoluntario({
       setLoading(true);
       setMsg("");
 
-      const idUsuario = localStorage.getItem("idUsuario");
+      // Obtener id del usuario logueado
+      const idUsuario = Number(localStorage.getItem("idUsuario"));
 
-      const response = await postData("voluntariados/voluntariados/inscribir/", {
-        voluntariado: idVoluntariado,
-        usuario: idUsuario,
-        fecha : new Date().toISOString()
-      });
-
-      if (!response || response.detail || response.error) {
-        throw new Error("Error en la inscripción");
+      if (!idUsuario) {
+        setMsg("Usuario no válido. Inicia sesión nuevamente.");
+        return;
       }
+
+      // Llamada correcta al backend
+      await postData("voluntariados/inscribir/", {
+        voluntariado: idVoluntariado,
+        usuario: idUsuario
+      });
 
       setMsg("¡Inscripción exitosa!");
     } catch (error) {
       console.error(error);
-      setMsg("Error al inscribirse al voluntariado");
+      setMsg("No se pudo completar la inscripción");
     } finally {
       setLoading(false);
     }
@@ -41,7 +42,6 @@ function BlogCardVoluntario({
 
   return (
     <div className="blog-card">
-
       {imagen_url && (
         <img
           src={imagen_url}
@@ -51,7 +51,9 @@ function BlogCardVoluntario({
       )}
 
       <p className="blog-category">{category}</p>
+
       <h3 className="blog-title">{title}</h3>
+
       <p className="blog-desc">{desc}</p>
 
       <div className="blog-footer">
@@ -72,5 +74,6 @@ function BlogCardVoluntario({
 }
 
 export default BlogCardVoluntario;
+
 
 
